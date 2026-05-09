@@ -7,3 +7,4 @@ matplotlib
 requests
 scikit-learn
 nltk
+gdown
