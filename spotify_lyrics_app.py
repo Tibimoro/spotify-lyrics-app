@@ -157,12 +157,12 @@ st.markdown("---")
 
 # ── Carga de datos ──────────────────────────────────────────────────────────────
 if not os.path.exists(data_file):
-    st.warning(
-        f"⚠️ Fichero `{data_file}` no encontrado. "
-        "Descárgalo de [Kaggle](https://www.kaggle.com/datasets/rodolfofigueroa/spotify-12m-songs) "
-        "y colócalo en el mismo directorio que esta app."
-    )
-    st.stop()
+    import gdown
+    with st.spinner("Descargando dataset de Spotify (~500MB)..."):
+        gdown.download(
+            "https://drive.google.com/uc?id=1jsXTNtGhOrsCApQctYx-hRxAQASAcPlI",
+            data_file, quiet=False
+        )
 
 with st.spinner("Cargando y filtrando datos..."):
     TARGET_ARTIST_ID = '4Z8W4fKeB5YxbusRsdQVPb'
